@@ -1,5 +1,5 @@
 @extends('Admin.layouts.app')
 
 @section('wrapper')
-user
+users
 @endsection
