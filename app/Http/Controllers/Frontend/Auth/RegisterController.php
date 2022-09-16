@@ -22,6 +22,7 @@ class RegisterController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->country = $request->country;
+        $user->ip = $request->ip();
         $user->save();
         Auth::loginUsingId($user->id);
         $user->assignRole('Customer');

@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
@@ -16,6 +17,3 @@ function tt($text)
     return $newText;
 }
 
-function caches($attribute){
-    return Cache::get($attribute);
-}

@@ -17,4 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/index', [HomeController::class, 'index'])->name('index');
 
-Route::get('users', [UserController::class, 'index'])->name('user.index');
+
+Route::prefix('users')->name('user.')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('index');
+    Route::get('/delete/{user}', [UserController::class, 'delete'])->name('delete');
+});
