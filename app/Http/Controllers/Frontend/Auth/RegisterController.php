@@ -18,7 +18,8 @@ class RegisterController extends Controller
     public function register(RegisterRequests $request)
     {
         $user = new User();
-        $user->name = $request->fname . ' ' . $request->lname;
+        $user->fname = $request->fname;
+        $user->lname = $request->lname;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->country = $request->country;

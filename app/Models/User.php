@@ -3,11 +3,14 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -23,6 +26,8 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+
+    protected $append  =['full_name'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -42,4 +47,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function fullName(): Attribute
+    {
+        return new Attribute(
+            get: fn() => $this->fname . ' ' . $this->lname 
+        );
+    }
 }

@@ -14,7 +14,7 @@
         </div>
         <div class="ms-auto">
             <div class="btn-group">
-                <button type="button" class="btn btn-primary">Add New User</button>
+                <a href="{{ route('admin.user.add') }}" class="btn btn-primary">Add New User</a>
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
                             @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->full_name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->getRoleNames() != '[]' ? $user->getRoleNames()[0] : '' }}</td>
                                     <td class="text-center">
@@ -51,7 +51,7 @@
                                                     d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
                                             </svg>
                                         </a>
-                                        <a href="" class="btn btn-success p-2 rounded-circle">
+                                        <a href="{{ route('admin.user.edit', [$user]) }}" class="btn btn-success p-2 rounded-circle">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" style="height: 24px;width: 24px">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -89,13 +89,13 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">{{ $user->name }}</h5>
+                        <h5 class="modal-title">{{ $user->full_name }}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="pt-1 pb-3 border-bottom d-flex justify-content-between align-items-center">
                             <div>Name:</div>
-                            <div>{{ $user->name }}</div>
+                            <div>{{ $user->full_name }}</div>
                         </div>
                         <div class="pt-3 pb-3 border-bottom d-flex justify-content-between align-items-center">
                             <div>Email:</div>

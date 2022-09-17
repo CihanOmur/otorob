@@ -17,7 +17,7 @@
                 <div class="menu-title">{{ tt('Dashboard') }}</div>
             </a>
         </li>
-        <li>
+        <li class="{{ request()->routeIs('admin.user.*') ? 'mm-active' :'' }}">
             <a href="{{ route('admin.user.index') }}">
                 <div class="parent-icon"><i class='bx bx-user-circle'></i>
                 </div>
