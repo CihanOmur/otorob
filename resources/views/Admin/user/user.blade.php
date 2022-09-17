@@ -106,6 +106,10 @@
                             <div>{{ $user->getRoleNames() != '[]' ? $user->getRoleNames()[0] : ''  }}</div>
                         </div>
                         <div class="pt-3 pb-3 border-bottom d-flex justify-content-between align-items-center">
+                            <div>Country:</div>
+                            <div>{{ $user->country }}</div>
+                        </div>
+                        <div class="pt-3 pb-3 border-bottom d-flex justify-content-between align-items-center">
                             <div>Registered IP Adress:</div>
                             <div>{{ $user->ip }}</div>
                         </div>
