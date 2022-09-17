@@ -49,7 +49,7 @@
                           </svg>
                           
                         <div class="user-info ps-3">
-                            <p class="user-name mb-0">{{ auth()->user()->name }}</p>
+                            <p class="user-name mb-0">{{ auth()->user()->full_name }}</p>
                             <p class="designattion mb-0">{{ tt(auth()->user()->getRoleNames()[0]) }}</p>
                         </div>
                     </a>

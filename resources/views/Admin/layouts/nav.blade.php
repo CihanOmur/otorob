@@ -38,7 +38,7 @@
                 </div>
                 <div class="menu-title">{{ tt('Dashboard') }}</div>
             </a>
-            <ul>
+            <ul class="mm-collopse">
                 <li> <a href="{{ url('index') }}"><i class="bx bx-right-arrow-alt"></i>{{ tt('eCommerce') }}</a>
                 </li>
                 <li> <a href="{{ url('dashboard-alternate') }}"><i class="bx bx-right-arrow-alt"></i>{{ tt('Analytics') }}</a>

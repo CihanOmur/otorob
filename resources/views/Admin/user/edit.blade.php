@@ -124,7 +124,6 @@
     </div>
 @endsection
 @section('script')
-    <script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $("#show_hide_password a").on('click', function(event) {
