@@ -54,7 +54,7 @@
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href=""><i class="bx bx-user"></i><span>{{ tt('Profile') }}</span></a>
+                        <li><a class="dropdown-item" href="{{ route('admin.user.view', [auth()->user()]) }}"><i class="bx bx-user"></i><span>{{ tt('Profile') }}</span></a>
                         </li>
                         <li>
                             <div class="dropdown-divider mb-0"></div>

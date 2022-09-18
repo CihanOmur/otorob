@@ -76,4 +76,12 @@ class UserController extends Controller
         $user->assignRole($request->role);
         return redirect()->route('admin.user.index');
     }
+    public function view(User $user)
+    {
+        $roles = Role::latest()->get()->pluck('name');
+        return view('Admin.user.user-profile', [
+            'user' => $user,
+            'roles' => $roles,
+        ]);
+    }
 }

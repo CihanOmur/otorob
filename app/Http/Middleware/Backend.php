@@ -19,9 +19,9 @@ class Backend
      */
     public function handle(Request $request, Closure $next)
     {
-        // if (!Cache::has('user')) {
-        //     Cache::forever('user', );
-        // }
-        return $next($request);
+        if (auth()->user()->getRoleNames()[0] == 'Super Admin' || auth()->user()->getRoleNames()[0] == 'Admin') {
+            return $next($request);
+        }
+        return redirect()->route('index');
     }
 }

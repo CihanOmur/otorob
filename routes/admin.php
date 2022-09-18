@@ -21,6 +21,7 @@ Route::get('/index', [HomeController::class, 'index'])->name('index');
 Route::prefix('users')->name('user.')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
     Route::get('/delete/{user}', [UserController::class, 'delete'])->name('delete');
+    Route::get('/view/{user}', [UserController::class, 'view'])->name('view');
     Route::get('add', [UserController::class, 'add'])->name('add');
     Route::post('create', [UserController::class, 'create'])->name('create');
     Route::get('edit/{user}', [UserController::class, 'edit'])->name('edit');
