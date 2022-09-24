@@ -30,9 +30,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (!Cache::has('countries')) {
-            Cache::forever('countries', Country::orderBy('country_name')->get());
-        }
+        // if (!Cache::has('countries')) {
+        //     Cache::forever('countries', Country::orderBy('country_name')->get());
+        // }
         $this->configureRateLimiting();
         $this->routes(function () {
             Route::middleware('api')
