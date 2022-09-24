@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Home\HomeController;
+use App\Http\Controllers\Admin\Settings\SettingsController;
 use App\Http\Controllers\Admin\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,10 @@ Route::prefix('users')->name('user.')->group(function () {
     Route::post('create', [UserController::class, 'create'])->name('create');
     Route::get('edit/{user}', [UserController::class, 'edit'])->name('edit');
     Route::post('update/{user}', [UserController::class, 'update'])->name('update');
+});
+
+Route::prefix('settings')->name('settings.')->group(function () {
+    Route::get('/', [SettingsController::class, 'index'])->name('index');
+    Route::get('/optimize', [SettingsController::class, 'clearOptimize'])->name('clear.optimize');
+    Route::get('/cache', [SettingsController::class, 'clearCache'])->name('clear.cache');
 });

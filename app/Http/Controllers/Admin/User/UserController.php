@@ -7,6 +7,7 @@ use App\Http\Requests\UserAddRequests;
 use App\Http\Requests\UserEditRequests;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
@@ -14,6 +15,11 @@ class UserController extends Controller
 {
     public function index()
     {
+        if (auth()->user()->getRoleNames()[0] != 'Super Admin') {
+            $users = User::whereNot('id', auth()->user()->id)->get()->filter(function ($user) {
+                return $user->getRoleNames()[0] != 'Super Admin';
+            });
+        }
         $users = User::whereNot('id', auth()->user()->id)->get();
         return view('Admin.user.user', [
             'users' => $users,
@@ -31,6 +37,7 @@ class UserController extends Controller
         $roles = Role::latest()->get()->pluck('name');
         return view('Admin.user.add', [
             'roles' => $roles,
+            'countries' => Cache::get('countries'),
         ]);
     }
     public function create(UserAddRequests $request)
@@ -55,6 +62,7 @@ class UserController extends Controller
         return view('Admin.user.edit', [
             'roles' => $roles,
             'user' => $user,
+            'countries' => Cache::get('countries'),
         ]);
     }
 

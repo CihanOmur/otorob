@@ -94,15 +94,9 @@
                 <div class="col-12">
                     <label class="form-label">{{ tt('Country') }}</label>
                     <select name="country" class="single-select">
-                        <option value="United States">United States</option>
-                        <option value="United Kingdom">United Kingdom</option>
-                        <option value="Afghanistan">Afghanistan</option>
-                        <option value="Aland Islands">Aland Islands</option>
-                        <option value="Albania">Albania</option>
-                        <option value="Algeria">Algeria</option>
-                        <option value="American Samoa">American Samoa</option>
-                        <option value="Andorra">Andorra</option>
-                        <option value="Angola">Angola</option>
+                        @foreach ($countries as $country)
+                            <option value="{{ $country->country_name }}">{{ $country->country_name }}</option>
+                        @endforeach
 
                     </select>
                     @if ($errors->has('country'))

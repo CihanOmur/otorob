@@ -3,9 +3,12 @@
 namespace App\Providers;
 
 use App\Http\Middleware\Backend;
+use App\Models\Countries;
+use App\Models\Country;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
@@ -27,8 +30,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (!Cache::has('countries')) {
+            Cache::forever('countries', Country::orderBy('country_name')->get());
+        }
         $this->configureRateLimiting();
-
         $this->routes(function () {
             Route::middleware('api')
                 ->prefix('api')

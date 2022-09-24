@@ -24,6 +24,13 @@
                 <div class="menu-title">{{ tt('Users') }}</div>
             </a>
         </li>
+        <li class="{{ request()->routeIs('admin.settings.*') ? 'mm-active' :'' }}">
+            <a href="{{ route('admin.settings.index') }}">
+                <div class="parent-icon"><i class='fadeIn animated bx bx-cog'></i>
+                </div>
+                <div class="menu-title">{{ tt('Settings') }}</div>
+            </a>
+        </li>
         <li class="menu-label">{{ tt('Nav Bar Examples') }}</li>
         <li>
             <a href="widgets">
